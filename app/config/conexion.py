@@ -33,6 +33,7 @@ class DBConexion:
             self.conn.close()
             self.conn = None
     
+    # Método para ejecutar una consulta SQL y devolver los resultados
     def ejecutar_procedimiento_almacenado(self, procedimiento, params=()):
         try:
             if not self.conn:
@@ -43,11 +44,11 @@ class DBConexion:
             cursor.execute(consulta, params)
             self.conn.commit()
             return cursor
-
         except Exception as e:
             print(f"Error al ejecutar el procedimiento almacenado: {e}")
             raise
     
+    # Método para ejecutar una consulta SQL y devolver los resultados
     def obtener_resultados(self, cursor):
         try:
             columnas = [column[0] for column in cursor.description]
